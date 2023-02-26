@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>First Game</title>
+        <script>
+            var timer;
+var won=0
+var array=[];
+var count=0;
+var canPlay=0;
+ function score(b)
+            {
+                if(array.includes(b))
+                {
+                    return;
+                }
+                if(canPlay==0){
+                    return;
+                }
+                else
+                {
+                    array[count]=b;
+                }
+                count++;
+                alert("Good Job👍🏻");
+                document.getElementById("score").innerHTML=count;
+                if(count==5)
+                {
+                    won=1;
+                    window.open("win.html");
+                }
+            }
+function start(){
+    timer=setInterval(timefun,1000);
+    canPlay=1;
+}
+ t=0;
+ function timefun()
+ {
+    if(t>=29)
+    {
+        canPlay=0;
+        window.open("fail.html");
+        clearInterval(timer);
+    }
+    else if(won==1){
+        clearInterval(timer);
+    }
+    document.getElementById("time").innerHTML=29-t;
+    t++;
+ }
+        </script>
+        <style>
+            body
+{
+    background-color: azure;
+}
+table
+{
+    background-color: lavender;
+    border-radius: 1px;
+    width: 6%;
+    height: 45px;
+    font-weight: bold;
+    
+}
+th
+{
+    color:blueviolet;
+    background-color:aliceblue ;
+}
+td
+{
+    text-align: center;
+    font-size: 25px;
+
+}
+h1
+{
+    color:dodgerblue;
+    text-shadow: 10px 10px 10px dodgerblue;
+}
+table.timer
+{
+    width: 7%;
+    height: 35px;
+    border-radius: 1px;
+}
+h4
+{
+    font-size: 17px;
+}
+button
+{
+    color: white;
+    background-color: skyblue;
+}
+        </style>
+    </head>
+    <body>
+
+        <center><h1>🔎FIND IT OUT🔍</h1></center>
+
+        <center>
+            <h4>Find the 5 differences between the pictures</h4>
+            <h4>click START to begin ⬇️</h4>
+            <br>
+            <div class="box">
+            <img src="game_image1.jpg" usemap="#show">
+    
+            <map name="show">
+                <area alt="legR"  coords="582,286,597,306,600,272,609,306,621,284,614,333,601,353,588,340" shape="poly" onclick="score(1)" id="1">
+                <area alt="holeR"  coords="453,339,15" shape="circle" onclick="score(2)" id="2">
+                <area alt="red"  coords="453,171,18" shape="circle" onclick="score(3)" id="3">
+                <area alt="IceR"  coords="556,36,17" shape="circle" onclick="score(4)" id="4">
+                <area alt="tailL" coords="318,301,15" shape="circle" onclick="score(5)" id="5">
+    </map>
+    </div>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>SCORE</th>
+        </tr>
+        <tr>
+            <td id="score">0</td>
+        </tr>
+
+    </table>
+
+    <br>
+    <table class="timer">
+        <tr>
+            <td id="start"><button onclick="start()">START</button> :</td>
+            <td id="time">30</td>
+        </tr>
+    </table>
+
+    </center>
+    
+    </body>
+    
+</html>
